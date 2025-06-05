@@ -10,8 +10,8 @@ int main() {
     int pontosTuristicos1;
     float densidadePopulacional1, pibPerCapita1;
 
-    // Registro da Carta 1
-    printf("Cadastro da Carta 1: \n");
+    // Cadastro da Carta 1
+    printf("Cadastro da Carta 1:\n");
     printf("Digite o estado (A-H):\n");
     scanf(" %c", &estado1); 
     printf("Digite o código da carta (ex: A1, B2):\n");
@@ -36,40 +36,42 @@ int main() {
     int pontosTuristicos2;
     float densidadePopulacional2, pibPerCapita2;
 
-    // Registro da Carta 2
-    printf("Cadastro da Carta 2:\n");
-    printf("Digite o estado (A-H): \n");
+    // Cadastro da Carta 2
+    printf("\nCadastro da Carta 2:\n");
+    printf("Digite o estado (A-H):\n");
     scanf(" %c", &estado2); 
-    printf("Digite o código da carta (ex: A1, B2): \n");
+    printf("Digite o código da carta (ex: A1, B2):\n");
     scanf("%4s", codigoDaCarta2); 
-    printf("Digite o nome da cidade: \n");
+    printf("Digite o nome da cidade:\n");
     scanf("%49s", nomeCidade2); 
-    printf("Digite a população da cidade: \n");
+    printf("Digite a população da cidade:\n");
     scanf("%lu", &populacao2); 
-    printf("Digite a área da cidade (km²): \n");
+    printf("Digite a área da cidade (km²):\n");
     scanf("%f", &area2);
-    printf("Digite o PIB da cidade (em bilhões de reais): \n");
+    printf("Digite o PIB da cidade (em bilhões de reais):\n");
     scanf("%f", &pib2);
-    printf("Digite o número de pontos turísticos: \n");
+    printf("Digite o número de pontos turísticos:\n");
     scanf("%d", &pontosTuristicos2);
 
-    // Cálculo da densidade populacional e PIB per capita
-    densidadePopulacional1 = populacao1 / area1; 
-    pibPerCapita1 = (pib1 * 1e9) / populacao1; 
+    // Cálculo de Densidade Populacional e PIB per capita
+    densidadePopulacional1 = populacao1 / area1;
+    pibPerCapita1 = (pib1 * 1e9) / populacao1;
 
-    densidadePopulacional2 = populacao2 / area2; 
-    pibPerCapita2 = (pib2 * 1e9) / populacao2; 
+    densidadePopulacional2 = populacao2 / area2;
+    pibPerCapita2 = (pib2 * 1e9) / populacao2;
 
-    // Comparação de cartas (Atributo: População)
-    printf("\nComparação de cartas (Atributo: População):\n");
-    printf("Carta 1 - %s (%c): %lu\n", nomeCidade1, estado1, populacao1);
-    printf("Carta 2 - %s (%c): %lu\n", nomeCidade2, estado2, populacao2);
+    // Comparação entre cartas - Atributo escolhido: PIB per capita
+    printf("\nComparação de cartas (Atributo: PIB per capita):\n");
 
-    // Comparação das populações
-    if (populacao1 > populacao2) {
+    printf("Carta 1 - %s (%c): R$ %.2f\n", nomeCidade1, estado1, pibPerCapita1);
+    printf("Carta 2 - %s (%c): R$ %.2f\n", nomeCidade2, estado2, pibPerCapita2);
+
+    if (pibPerCapita1 > pibPerCapita2) {
         printf("Resultado: Carta 1 (%s) venceu!\n", nomeCidade1);
-    } else {
+    } else if (pibPerCapita2 > pibPerCapita1) {
         printf("Resultado: Carta 2 (%s) venceu!\n", nomeCidade2);
+    } else {
+        printf("Resultado: Empate! Ambas as cartas possuem o mesmo PIB per capita.\n");
     }
 
     return 0;
